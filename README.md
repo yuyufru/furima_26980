@@ -31,7 +31,7 @@ items table
 
 Association
 -belongs_to :user
--belongs_to:item_purchases
+-belongs_to:item_purchase
 
 addresses table
 |Column|Type|Options|
