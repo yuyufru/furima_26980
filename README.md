@@ -31,7 +31,7 @@ items table
 Association
 -belongs_to :user
 
-address table
+addresses table
 |Column|Type|Options|
 |------|----|-------|
 |post_code|string|null: false|
@@ -45,7 +45,7 @@ address table
 Association
 -belongs_to :user
 
-transaction table
+item_purchases　table
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false|
