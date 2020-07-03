@@ -12,7 +12,8 @@ users  table
 
 Association
 -has_many :items
--has_one :profile
+-has_one :address
+-has_many :item_purchases
 
 items table
 |Column|Type|Options|
@@ -30,6 +31,7 @@ items table
 
 Association
 -belongs_to :user
+-belongs_to:item_purchases
 
 addresses table
 |Column|Type|Options|
