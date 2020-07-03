@@ -8,14 +8,11 @@ users  table
 |family_name|string|null: false|
 |first_name_kana|string|null: false|
 |family_name_kana|string|null: false|
-|birth_day|date|null: false|
+|birth_day|integer|null: false|
 
 Association
--has_many :comments
--has_many :seller_items, foreign_key: "seller_id"
--has_many :buyer_items, foreign_key: "buyer_id"
+-has_many :items
 -has_one :profile
-
 
 items table
 |Column|Type|Options|
@@ -29,23 +26,10 @@ items table
 |price_tax|integer|null: false|
 |category|integer|null: false|
 |brand|references|null: false|
-|seller|references|null: false|
 |user|references|null: false, foreign_key: true|
 
 Association
--belongs_to :item
-
-
-comments table
-|Column|Type|Options|
-|------|----|-------|
-|comment|text|null: false|
-|user|references|null: false|
-|item|references|null: false|
-
-Association
 -belongs_to :user
--belongs_to :item
 
 address table
 |Column|Type|Options|
