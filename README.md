@@ -17,15 +17,15 @@ Association
 items table
 |Column|Type|Options|
 |------|----|-------|
-|img|references|null: false|
+|img|text|null: false|
 |name|string|null: false|
 |info|text|null: false|
-|category|references|null: false|
-|status|references|null: false|
+|category|integer|null: false|
+|status|integer|null: false|
 |price|integer|null: false|
 |price_tax|integer|null: false|
 |category|integer|null: false|
-|brand|references|null: false|
+|brand|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 Association
@@ -34,14 +34,23 @@ Association
 address table
 |Column|Type|Options|
 |------|----|-------|
-|post_code|integer|null: false|
-|prefecture|references|null: false|
+|post_code|string|null: false|
+|prefecture|string|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string|-------|
-|phone_number|integer|unique: true|
+|phone_number|string|unique: true|
 |user|references|null: false, foreign_key: true|
 
 Association
 -belongs_to :user
 
+transaction table
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false|
+|item|references|null: false|
+
+Association
+-belongs_to :user
+-belongs_to :item
