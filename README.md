@@ -29,7 +29,7 @@ items table
 |user|references|null: false, foreign_key: true|
 
 Association
--belongs_to :user
+-belongs_to :address
 -has_one:item_purchase
 
 addresses table

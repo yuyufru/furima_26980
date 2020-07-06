@@ -18,7 +18,7 @@
       <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :text, class:"input-default", placeholder:"例) furima太郎", maxlength:"40" %>
+    <%= f.text_area :nickname, class:"input-default", placeholder:"例) furima太郎", maxlength:"40" %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -41,11 +41,7 @@
       <label class="form-text">パスワード(確認)</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :password, class:"input-default", placeholder:"同じパスワードを入力して下さい" %>
-    <% if @validatable %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+    
       </div>
   </div>
   <div class="form-group">
@@ -62,8 +58,8 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.text_area :text, class:"input-name", placeholder:"例) 山田" %>
-      <%= f.text_area :text, class:"input-name", placeholder:"例) 陸太郎" %>
+      <%= f.text_area :last_name, class:"input-name", placeholder:"例) 山田" %>
+      <%= f.text_area :first_name, class:"input-name", placeholder:"例) 陸太郎" %>
     </div>
   </div>
   <div class="form-group">
@@ -72,8 +68,8 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.text_area :text, class:"input-name", placeholder:"例) ヤマダ" %>
-      <%= f.text_area :text, class:"input-name", placeholder:"例) リクタロウ" %>
+      <%= f.text_area :last_name_kana, class:"input-name", placeholder:"例) ヤマダ" %>
+      <%= f.text_area :first_name_kana, class:"input-name", placeholder:"例) リクタロウ" %>
     </div>
   </div>
   <div class="form-group">
@@ -84,7 +80,7 @@
     <div class='input-birth-wrap'>
       <%= raw sprintf(
                   f.date_select(
-                    :date,
+                    :birth_day,
                     class:'select-birth',
                     use_month_numbers: true,
                     prompt:'--',

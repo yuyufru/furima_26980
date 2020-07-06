@@ -13,12 +13,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    # @group = Group.new(group_params)
-    # if @group.save
-    #   redirect_to root_path, notice: 'グループを作成しました'
-    # else
-    #   render :new
-    # end
+    
+    @uses = User.new(user_params)
+    if @user.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -35,8 +36,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
-    :nickname,
+    params.require(:user).permit(
+      :nickname,
       :email,
       :password,
       :password_confirmation,
@@ -45,9 +46,15 @@ class UsersController < ApplicationController
       :last_name_kana,
       :first_name_kana,
       :birth_day,
+    )
   end
-end
+
 
   def show
-    @nickname = user.nickname
+    @nickname = current_user.nickname
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 end

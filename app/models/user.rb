@@ -6,8 +6,11 @@ class User < ApplicationRecord
   has_many :items
   has_one :address
   has_many :item_purchases
+  validates :password, presence: true, length: { maximum: 8 }
+  # validates :name, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true
 end
 
-# def new
-#   @user = Users.new
-# end    
+def new
+  @user = Users.new
+end  
