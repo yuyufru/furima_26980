@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
       :building_name,
       :phone_number,
   end
-#   def new
-#     @address = Address.new
-#   end    
+  def new
+    @address = Address.new
+  end    
 end

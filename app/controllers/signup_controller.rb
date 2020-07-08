@@ -1,6 +1,7 @@
 class SignupController < ApplicationController
   def 
     @user = User.new
+    binding.pry
   end
 
   private

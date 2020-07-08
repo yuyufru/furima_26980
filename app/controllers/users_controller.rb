@@ -48,7 +48,6 @@ class UsersController < ApplicationController
     )
   end
 
-
   def show
     @nickname = current_user.nickname
   end
