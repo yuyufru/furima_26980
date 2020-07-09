@@ -14,28 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save
       sign_up(resource_name, resource)
-      redirect_to root_path
+      redirect_to new_item_path
     else
       render :new
     end
   end
 
-  private
-
-  def user_params
-    birthday = "#{params[:user]["birth_day(1i)"]}-#{params[:user]["birth_day(2i)"]}-#{params[:user]["birth_day(3i)"]}"
-    params.require(:user).permit(
-      :nickname,
-      :email,
-      :password,
-      :password_confirmation,
-      :last_name,
-      :first_name,
-      :last_name_kana,
-      :first_name_kana,
-      :birth_day,
-    )
-  end
   # GET /resource/edit
   # def edit
   #   super
@@ -81,4 +65,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def user_params
+    birthday = "#{params[:user]["birth_day(1i)"]}-#{params[:user]["birth_day(2i)"]}-#{params[:user]["birth_day(3i)"]}"
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :birth_day,
+    )
+  end
 end

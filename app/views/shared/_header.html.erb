@@ -17,10 +17,13 @@
     <% if user_signed_in? %>
       <div class="user_nav grid-6">
         <span>
-          <ul class="user__info">
+          <ul class="lists-right">
             <li>
-              <p class="test"><%= current_user.nickname %></p>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <a class="user-nickname" href="#"><%= current_user.nickname %></a>
+            </li>
+            <li>
+              <!-- <p class="test"><%#= current_user.nickname %></p> -->
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'logout' %>
             </li>
           </ul>
         </span>

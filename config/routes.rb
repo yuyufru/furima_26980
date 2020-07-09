@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users , controllers: {
-    registrations: "users/registrations"
-  }
+    registrations: "users/registrations",
+    sessions: "users/sessions"  
+  } 
   root to: "items#index"
   get "signup", to: "signup#index"
   resources :signup do
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
       get 'complete_signup'
     end
   end
+
+  resources :signin ,only: [:new, :create, :index]
 
   resources :signup, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update,:show]
