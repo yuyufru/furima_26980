@@ -2,36 +2,38 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
+    before do
+      user = build(:user)
+    end
     # 1. nicknameとemail、passwordとpassword_confirmation,first_name,:last_name,:last_name_kana,:first_name_kana,:birthdayが存在すれば登録できること
     it "is valid with a nickname, email, password, password_confirmation,first_name,:last_name,:last_name_kana,:first_name_kana,:birthday" do
-      user = build(:user)
       expect(user).to be_valid
     end
 
     # 2. nicknameが空では登録できないこと
     it "is invalid without a nickname" do
-      user = build(:user, nickname: nil)
+      user.nickname = ""
       user.valid?
       expect(user.errors[:nickname]).to include("can't be blank")
     end
 
     # 3. emailが空では登録できないこと
     it "is invalid without a email" do
-      user = build(:user, email: nil)
+      user.email = ""
       user.valid?
       expect(user.errors[:email]).to include("can't be blank")
     end
 
     # 4. passwordが空では登録できないこと
     it "is invalid without a password" do
-      user = build(:user, password: nil)
+      user.password = ""
       user.valid?
       expect(user.errors[:password]).to include("can't be blank")
     end
 
     # 5. passwordが存在してもpassword_confirmationが空では登録できないこと
     it "is invalid without a password_confirmation although with a password" do
-      user = build(:user, password_confirmation: "")
+      user. password_confirmation= ""
       user.valid?
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
@@ -72,7 +74,6 @@ describe User do
       user.valid?
       expect(user.errors[:last_name_kana]).to include("はカタカナで入力してください")
     endユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること
-    end
     end
 
     #11.ユーザー本名のフリガナは全角（カタカナ）で入力させること
