@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_one :address
   has_many :item_purchases
   validates :password, length: { minimum: 6 }
-  # validates :name, presence: true, uniqueness: true
   validates :nickname, presence: true, uniqueness: true
   validates :first_name,:last_name,:last_name_kana,:first_name_kana,:birth_day ,presence: true
 
@@ -17,8 +16,5 @@ class User < ApplicationRecord
     validates :nickname, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数で入力してください。"}
   end
 
-# def new
-#   @user = Users.new
-# end  
 end
 

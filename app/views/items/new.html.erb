@@ -50,12 +50,14 @@
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:category, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%# <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %> %>
+        <%= f.collection_select(:category, [category_id], :id, :name, {}, {class:"select-box"}) %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:status, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+        <%# <%= f.collection_select(:status, [status_id], :id, :name, {}, {class:"select-box"}) %> %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -71,17 +73,18 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%# <%= f.collection_select(:postage, [postage_id], :hoge, :hoge, {}, {class:"select-box"}) %> %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:prefecture, [], :hoge, :hoge, {}, {class:"select-box"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:shipping_date, [], :hoge, :hoge, {}, {class:"select-box"}) %>
       </div>
     </div>
     <%# /配送について %>

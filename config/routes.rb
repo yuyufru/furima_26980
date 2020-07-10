@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'articles/index'
+  get 'articles/new'
   devise_for :users , controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"  
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :signin ,only: [:new, :create, :index]
-
+  resources :articles
   resources :signup, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update,:show]
   resources :items, only: [:index, :new, :create, :edit, :update] do
