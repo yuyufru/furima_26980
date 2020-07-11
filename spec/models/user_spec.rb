@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   describe '#create' do
     before do
-      user = build(:user)
+      user = FactoryBot.build(:user)
     end
     # 1. nicknameとemail、passwordとpassword_confirmation,first_name,:last_name,:last_name_kana,:first_name_kana,:birthdayが存在すれば登録できること
     it "is valid with a nickname, email, password, password_confirmation,first_name,:last_name,:last_name_kana,:first_name_kana,:birthday" do
@@ -40,8 +40,8 @@ describe User do
 
     # 6. 重複したemailが存在する場合登録できないこと
     it "is invalid with a duplicate email address" do
-      user = create(:user)
-      another_user = build(:user, email: user.email)
+      user = create(:user , email:"test@test")
+      another_user = build(:user, email:"test@test")
       another_user.valid?
       expect(another_user.errors[:email]).to include("has already been taken")
     end

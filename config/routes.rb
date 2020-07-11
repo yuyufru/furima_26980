@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :signin ,only: [:new, :create, :index]
-  resources :articles
   resources :signup, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update,:show]
   resources :items, only: [:index, :new, :create, :edit, :update] do

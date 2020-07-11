@@ -22,4 +22,3 @@ class Item< ActiveHash::Base
 end  
 
 
-r
