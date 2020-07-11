@@ -52,14 +52,14 @@ app/assets/stylesheets/items/new.css %>
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"category-select"}) %>
-        <%# <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %> %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"category-select"} %>
+        
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %> %>
-        <%= f.collection_select(:status_id, Status.all, :id, :name, {include_blank: "---"}, {class:"status-select"}) %>
+        
+        <%= f.collection_select :status_id, Status.all, :id, :name, {include_blank: "---"}, {class:"status-select"} %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -75,7 +75,7 @@ app/assets/stylesheets/items/new.css %>
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:postage, Postage.all, :id, :name, {include_blank: "---"}, {class:"postage-select"}) %>
+        <%= f.collection_select :postage, Postage.all, :id, :name, {include_blank: "---"}, {class:"postage-select"} %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
@@ -85,7 +85,7 @@ app/assets/stylesheets/items/new.css %>
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:shipping_date, Shipping_date.all, :id, :name, {include_blank: "---"}, {required: true}  %>
+        <%= f.collection_select :shipping_date, ShippingDate.all, :id, :name, {include_blank: "---"}, {required: true}  %>
       </div>
     </div>
     <%# /配送について %>

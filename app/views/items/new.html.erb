@@ -14,7 +14,7 @@
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        <%# 出品画像<div class="content_post" style="background-image: url(<%= tweet.image %>);"> %>
+      出品画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
@@ -51,13 +51,13 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"category-select"} %>
-        <%# <%= f.collection_select(:category, [category_id], :id, :name, {}, {class:"select-box"}) %> %>
+        
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select :status_id, Status.all, :id, :name, {include_blank: "---"}, {class:"status-select"} %>
-        <%# <%= f.collection_select(:status, [status_id], :id, :name, {}, {class:"select-box"}) %> %>
+        
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -73,13 +73,13 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select(:postage, [postage_id], :hoge, :hoge, {}, {class:"select-box"}) %> %>
+        
         <%= f.collection_select :postage, Postage.all, :id, :name, {include_blank: "---"}, {class:"postage-select"}%>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= form.label :prefecture, "都道府県" %> %>
+        
         <%= f.collection_select :prefecture, Prefecture.all, :id, :name, {include_blank: "---"}, {required: true}  %>
         </div>
         <div class="weight-bold-text">
