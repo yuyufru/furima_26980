@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :signin ,only: [:new, :create, :index]
   resources :signup, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update,:show]
-  resources :items, only: [:index, :new, :create, :edit, :update] do
+  resources :items, only: [:index, :new, :create, :edit, :update, :show] do
     member do
       get "purchase_confirmaiton"
     end

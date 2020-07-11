@@ -1,4 +1,4 @@
-class Item< ApplicationRecord
+class Item < ApplicationRecord
   has_one_attached :image
 
 #   #空の投稿を保存できないようにする
