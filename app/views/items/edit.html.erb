@@ -52,14 +52,14 @@ app/assets/stylesheets/items/new.css %>
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"category-select"} %>
+        <%= f.collection_select :category, Category.all, :id, :name, {include_blank: "---"}, {class:"category-select"} %>
         
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
         
-        <%= f.collection_select :status_id, Status.all, :id, :name, {include_blank: "---"}, {class:"status-select"} %>
+        <%= f.collection_select :status, Status.all, :id, :name, {include_blank: "---"}, {class:"status-select"} %>
       </div>
     </div>
     <%# /商品の詳細 %>

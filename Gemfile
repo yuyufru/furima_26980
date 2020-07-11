@@ -60,3 +60,5 @@ gem 'devise'
 gem 'pry-rails'
 gem 'rspec-rails', '~> 4.0.0.beta2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'carrierwave'
+gem 'mini_magick'
