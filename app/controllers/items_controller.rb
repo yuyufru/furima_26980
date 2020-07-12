@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :@item = Item.find(params[:id]), only: [:destory, edit, show, update]
+
   def index
     @items = Item.all
   end
@@ -8,9 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    
     @item = Item.new(item_params)
-    
     if @item.save
       redirect_to root_path
     else
@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    item = Item.find(params[:id])
     if item.destroy
       redirect_to root_path, notice: '削除しました'
     else
@@ -28,11 +27,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -41,7 +38,6 @@ class ItemsController < ApplicationController
   end  
 
   def show
-    @item = Item.find(params[:id])
   end  
 
   private
@@ -49,6 +45,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :image, :info, :category, :status, :price, :postage, :prefecture, :shipping_date, :price_tax, :brand).merge(user_id: current_user.id)
   end
+end
 
-
+def set_item
+  @item = Item.find(params[:id])
 end
