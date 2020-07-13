@@ -27,7 +27,7 @@ items table
 |price_tax|integer|null: false|
 |category|integer|null: false|
 |brand|integer|null: false|
-|user|references|null: false, foreign_key: true|
+|user|references|null: foreign_key: true|
 
 Association
 -belongs_to :user
@@ -42,12 +42,12 @@ addresses table
 |house_number|string|null: false|
 |building_name|string|-------|
 |phone_number|string|unique: true|
-|user|references|null: false, foreign_key: true|
+|user|references|null: false,|
 
 Association
 -belongs_to :user
 
-item_purchases　table
+item_purchases table
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false|
