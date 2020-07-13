@@ -25,12 +25,11 @@ items table
 |status|integer|null: false|
 |price|integer|null: false|
 |price_tax|integer|null: false|
-|category|integer|null: false|
 |brand|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 Association
--belongs_to :user
+-belongs_to :address
 -has_one:item_purchase
 
 addresses table
