@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-  get 'articles/new'
+
   devise_for :users , controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"  
@@ -24,10 +23,8 @@ Rails.application.routes.draw do
     collection do
       get "search"
     end
-  end
 
-  resources :address, only: [:new, :create, :edit, :update] do
-  end
+  resources :address, only: [:new, :create, :edit, :update]
 
   resources :users do
     resources :address, only: :create

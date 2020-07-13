@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :@item = Item.find(params[:id]), only: [:destory, edit, show, update]
+  before_action :set_item, only: [:destory, :edit, :show, :update]
 
   def index
     @items = Item.all
@@ -41,12 +41,11 @@ class ItemsController < ApplicationController
   end  
 
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :image, :info, :category, :status, :price, :postage, :prefecture, :shipping_date, :price_tax, :brand).merge(user_id: current_user.id)
   end
-end
-
-def set_item
-  @item = Item.find(params[:id])
 end
