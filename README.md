@@ -22,6 +22,7 @@ items table
 |name|string|null: false|
 |info|text|null: false|
 |category|integer|null: false|
+|prefecture|integer|null: false|
 |status|integer|null: false|
 |price|integer|null: false|
 |price_tax|integer|null: false|
