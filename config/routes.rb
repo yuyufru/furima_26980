@@ -19,11 +19,10 @@ Rails.application.routes.draw do
     member do
       get "purchase_confirmaiton"
     end
-
     collection do
       get "search"
     end
-
+  end
   resources :address, only: [:new, :create, :edit, :update]
 
   resources :users do

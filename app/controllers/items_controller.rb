@@ -21,8 +21,8 @@ class ItemsController < ApplicationController
   def destroy
     if item.destroy
       redirect_to root_path, notice: '削除しました'
-    else
-      render :edit
+    # else
+    #   render :edit
     end
   end
 
