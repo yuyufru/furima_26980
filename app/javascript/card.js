@@ -1,34 +1,38 @@
 const pay = () => {
-  Payjp.setPublicKey(pk_test_69392620b226962964f3d12a);
-  const form = document.getElementById("form-text");
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  const form = document.getElementById("form_a");
+  console.log(form)
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const formResult = document.getElementById("form-text");
+    const formResult = document.getElementById("form_a");
+    console.log(formResult)
     const formData = new FormData(formResult);
-
+    console.log(...formData.entries());
     const card = {
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("item_purchase[number]"),
+      cvc: formData.get("item_purchase[cvc]"),
+      exp_month: formData.get("item_purchase[exp_month]"),
+      exp_year: `20${formData.get("item_purchase[exp_year]")}`,
     };
+    console.log(card)
 
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
+        console.log("aaa")
         const token = response.id;
-        const renderDom = document.getElementById("form-text");
+        const renderDom = document.getElementById("form_a");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-
         document.getElementById("number").removeAttribute("name");
-        document.getElementById("cvc").removeAttribute("name");
+        document.getElementById("item_purchase_cvc").removeAttribute("name");
         document.getElementById("exp_month").removeAttribute("name");
         document.getElementById("exp_year").removeAttribute("name");
 
-        document.getElementById("form-text").submit();
-        document.getElementById("form-text").reset();
+        document.getElementById("form_a").submit();
+        document.getElementById("form_a").reset();
       } else {
+        console.log(response.error)
       }
     });
   });

@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       @order.save
       return redirect_to root_path
     else
-      #render
+      render :new
     end
   end
   
@@ -57,7 +57,8 @@ private
   end
  
   def pay_item
-    Payjp.api_key = "sk_test_ebf8b50ea255168efb2b37ef"
+    
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
@@ -65,16 +66,11 @@ private
     )
   end
 
-  # def item_purchase_params 
-  #   params.require(:item_purchase).permit(
-  #     :post_code,
-  #     :prefecture,
-  #     :password,
-  #     :city,
-  #     :house_number,
-  #     :building_name,
-  #     :phone_number
-  #   )
-  # end
+  def item_purchase_params 
+    params.require(:item_purchase).permit(
+      :item_id,
+      :user_id
+    )
+  end
 
 end

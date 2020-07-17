@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
-  # has_many :item_purchases
-  # has_one :address
 
   validates :password, length: { minimum: 6 }
   validates :nickname, presence: true, uniqueness: true

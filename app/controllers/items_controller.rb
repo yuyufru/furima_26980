@@ -53,9 +53,11 @@ class ItemsController < ApplicationController
       end
   end 
 
-  # def done
-    #   @item_purchase = UserPurchase.new(item_purchase_params) 
-    # end  
+  # def show_soldout_item(item_purchase_params) 
+  #   if (soldout_item = (item_purchase_params) ).present?
+  #     'SOLD OUT!!'
+  #   end
+  # end  
 
   private
   def set_item
@@ -77,20 +79,11 @@ class ItemsController < ApplicationController
       :brand).merge(user_id: current_user.id)
   end
 
-  # def item_purchase_params
-  #   params.require(:item_purchase).permit(
-  #     :post_code,
-  #     :prefecture,
-  #     :city,
-  #     :house_number,
-  #     :phone_number
-  #   )
-  # end
+  def item_purchase_params 
+    params.require(:item_purchase).permit(
+      :item_id,
+      :user_id
+    )
+  end
+  
 end
-
-
-# def index
-#   @item = Item.find(params[:item_id])
-# end  
-
-#
