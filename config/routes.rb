@@ -15,17 +15,18 @@ Rails.application.routes.draw do
   resources :signin ,only: [:new, :create, :index]
   resources :signup, only: [:index, :new, :create]
   resources :users, only: [:index, :edit, :update,:show]
+  
   resources :items do
+    resources :orders, only:[:new, :create]
     member do
-      get "purchase_confirmaiton"
+      get "order"
     end
     collection do
       get "search"
     end
   end
-  resources :address, only: [:new, :create, :edit, :update]
-
   resources :users do
-    resources :address, only: :create
+    resources :item_order, only: :create
   end
+  # resources :item_order, only: [:new, :create, :edit, :update]
 end

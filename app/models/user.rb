@@ -3,9 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_many :items
-  has_one :address
-  has_many :item_purchases
+  has_many :orders
+  # has_many :item_purchases
+  # has_one :address
+
   validates :password, length: { minimum: 6 }
   validates :nickname, presence: true, uniqueness: true
   validates :first_name,:last_name,:last_name_kana,:first_name_kana,:birth_day ,presence: true

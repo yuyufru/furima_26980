@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'payjp'
 
 group :production do
   gem 'rails_12factor'

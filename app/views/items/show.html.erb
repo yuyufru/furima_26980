@@ -34,7 +34,7 @@
 
   <% else %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to '購入画面に進む', purchase_confirmaiton_item_path ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', new_item_order_path(@item), method: :get, class: "item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
   <% end %>
 
