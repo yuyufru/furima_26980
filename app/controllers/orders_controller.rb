@@ -41,10 +41,10 @@ class OrdersController < ApplicationController
     order = Order.find_by(item_id: params[:item_id])
     if order 
       return redirect_to root_path
-    en
+    end
   end 
 
-private
+  private
 
   def item_order_params
     item = Item.find(params[:item_id])
@@ -81,10 +81,4 @@ private
       :user_id
     )
   end
-
 end
-
-private
-  def tweet_params
-    params.require(:tweet).permit(:name, :image, :text).merge(user_id: current_user.id)
-  end

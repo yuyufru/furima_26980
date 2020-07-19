@@ -57,14 +57,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 gem 'active_hash'
+gem 'carrierwave'
 gem 'devise'
+gem 'mini_magick'
+gem 'payjp'
 gem 'pry-rails'
 gem 'rspec-rails', '~> 4.0.0.beta2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'payjp'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :production do
   gem 'rails_12factor'

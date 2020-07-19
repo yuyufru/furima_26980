@@ -123,9 +123,8 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <!-- def link_to(text, url, options = {})
-    end-->
-    <%= link_to '新規投稿商品', "#", class: "subtite" %>
+    <!-- def link_to(text, url, options = {}) end-->
+    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
       <% if @items.present? %>
         <% @items.each do |item| %>
