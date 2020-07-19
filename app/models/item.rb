@@ -1,15 +1,18 @@
 class Item < ApplicationRecord
-  
   has_one_attached :image
   belongs_to :user
   has_one :order
   
   with_options presence: true do
-    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :name
+    validates :info
+    validates :category
+    validates :status
+    validates :price
+    validates :postage
+    validates :shipping_date
     validates :prefecture
-    validates :city
-    validates :house_number
-    validates :phone_number
+    validates :user_id  
   end
 end
 

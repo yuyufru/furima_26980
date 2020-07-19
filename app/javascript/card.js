@@ -32,6 +32,7 @@ const pay = () => {
         document.getElementById("form_a").submit();
         document.getElementById("form_a").reset();
       } else {
+        document.getElementById("form_a").submit();
         console.log(response.error)
       }
     });

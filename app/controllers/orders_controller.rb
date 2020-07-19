@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
  
   def create
-    @order = Order.new(item_purchase_params)
+    @order = Order.new(item_order_params)
     if @order.valid?
       @item = Item.find(params[:item_id])
       pay_item
@@ -20,6 +20,8 @@ class OrdersController < ApplicationController
       @order.save
       return redirect_to root_path
     else
+      @item = Item.find(params[:item_id])
+      @item_purchase = ItemPurchase.new
       render :new
     end
   end
@@ -36,20 +38,27 @@ class OrdersController < ApplicationController
     if item_purchase 
       return redirect_to root_path
     end  
+    order = Order.find_by(item_id: params[:item_id])
+    if order 
+      return redirect_to root_path
+    en
   end 
 
 private
 
   def item_order_params
-    params.require(:oder).permit(
+    item = Item.find(params[:item_id])
+    params.require(:item_purchase).permit(
       :post_code,
       :prefecture,
       :password,
       :city,
       :house_number,
       :building_name,
-      :phone_number
+      :phone_number,
+      
     )
+    .merge(item_id: params[:item_id], user_id: current_user.id, price: item.price).merge(token:params[:token])
   end
 
   def order_params
@@ -74,3 +83,8 @@ private
   end
 
 end
+
+private
+  def tweet_params
+    params.require(:tweet).permit(:name, :image, :text).merge(user_id: current_user.id)
+  end

@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+   
     if @item.save
       redirect_to root_path
     else
@@ -28,9 +29,10 @@ class ItemsController < ApplicationController
   def edit
   end
 
+
   def update
     if @item.update(item_params)
-      
+      redirect_to root_path
     else
       render :edit
     end
@@ -38,26 +40,22 @@ class ItemsController < ApplicationController
   
   def order
     @item = Item.find(params[:id])
-    # redirect_to root_path
   end  
 
   def purchase
     @item_purchase = UserPurchase.new(item_purchase_params) 
-    # redirect_to root_path
+   
   end
 
-  def correct_user
-    @correct_user = current_user(user_params)
-      unless @correct_user
-        redirect_to root_path
-      end
-  end 
+ 
 
-  # def show_soldout_item(item_purchase_params) 
-  #   if (soldout_item = (item_purchase_params) ).present?
-  #     'SOLD OUT!!'
-  #   end
-  # end  
+  def correct_user
+    unless current_user
+      return redirect_to root_path
+    end
+  end    
+
+  
 
   private
   def set_item
@@ -85,5 +83,5 @@ class ItemsController < ApplicationController
       :user_id
     )
   end
-  
 end
+  
