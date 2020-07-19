@@ -21,6 +21,9 @@ items table
 |img|text|null: false|
 |name|string|null: false|
 |info|text|null: false|
+|prefecture|integer|null: false|
+|postage|integer|null: false|
+|shipping_date|integer|null: false|
 |category|integer|null: false|
 |status|integer|null: false|
 |price|integer|null: false|
@@ -32,9 +35,11 @@ Association
 -belongs_to :address
 -has_one:item_purchase
 
-addresses table
+item_purchases table
 |Column|Type|Options|
 |------|----|-------|
+|user|references|null: false|
+|item|references|null: false|
 |post_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
@@ -43,14 +48,6 @@ addresses table
 |phone_number|string|unique: true|
 |user|references|null: false, foreign_key: true|
 
-Association
--belongs_to :user
-
-item_purchases　table
-|Column|Type|Options|
-|------|----|-------|
-|user|references|null: false|
-|item|references|null: false|
 
 Association
 -belongs_to :user

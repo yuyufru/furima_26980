@@ -7,16 +7,17 @@
       <%= @item.name %>
     </h2> 
     <div class='item-img-content'>
-      <% image_tag @item.image, class: "item-box-img" %>
-    <%# <% if sold_out_item.present? %> %>
-      <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
-    <%# <% else %> %>
+      <%= image_tag @item.image, class: "item-box-img" %> 
+      <% if @item.order %>
+      <div class="sold-out"> 
+        <span> Sold Out!!</span> 
+      </div>  
+      <% end %>
+    </div> 
+    <%# <% else 
       <%# //商品が売れている場合は、sould outの表示をしましょう。 %>
-    <%# <% end %>   %>
-    </div>
+    <%# <% end %>    
+    <%# </div> %>
     <div class="item-price-box">
       <span class="item-price">
         <%= @item.price %>
@@ -34,7 +35,9 @@
 
   <% else %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to '購入画面に進む', purchase_confirmaiton_item_path ,class:"item-red-btn"%>
+    <% unless @item.order %>
+      <%= link_to '購入画面に進む', new_item_order_path(@item), method: :get, class: "item-red-btn"%>
+    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
   <% end %>
 
