@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @test = ENV["PAYJP_PUBLIC_KEY"]
+
   end
 
   def new
